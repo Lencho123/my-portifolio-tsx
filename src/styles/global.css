@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: default body */
+body {
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans;
+}
