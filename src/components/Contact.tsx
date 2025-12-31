@@ -138,7 +138,7 @@ function getIcon(iconType: ContactLink['icon']) {
   }
 }
 
-export default function Contact({ links = defaultLinks, email }: ContactProps) {
+export default function Contact({ links = defaultLinks}: ContactProps) {
   const [formData, setFormData] = useState<FormData>({
     email: '',
     message: '',
