@@ -160,8 +160,8 @@ export default function Contact({ links = defaultLinks}: ContactProps) {
     // Message validation
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters'
+    } else if (formData.message.trim().length < 5) {
+      newErrors.message = 'Message must be at least 5 characters'
     }
 
     setErrors(newErrors)
@@ -169,38 +169,51 @@ export default function Contact({ links = defaultLinks}: ContactProps) {
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  e.preventDefault()
 
-    if (!validateForm()) {
-      return
-    }
+  if (!validateForm()) {
+    return
+  }
 
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
+  setIsSubmitting(true)
+  setSubmitStatus('idle')
 
-    try {
-      // Here you would typically send the form data to a backend API
-      // For now, we'll simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+  try {
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbwXm0pMTB6ZJk1iz88ISCFIecF2aqHA5nIIlqh3GNIkQqf5t_Mqi60WY6YYRNWL2cHv/exec',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+    )
 
-      // Simulate success
+    const result = await response.json()
+
+    if (result.status === 'success') {
       setSubmitStatus('success')
       setFormData({ email: '', message: '' })
       setErrors({})
 
-      // Reset success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 3000)
-    } catch (error) {
-      setSubmitStatus('error')
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 3000)
-    } finally {
-      setIsSubmitting(false)
+    } else {
+      throw new Error(result.message || 'Failed to submit form')
     }
+  } catch (error) {
+    console.error(error)
+    setSubmitStatus('error')
+    setTimeout(() => {
+      setSubmitStatus('idle')
+    }, 3000)
+  } finally {
+    setIsSubmitting(false)
   }
+}
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

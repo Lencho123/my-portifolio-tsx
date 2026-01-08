@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
+import logo from '../assets/logo.png'
 
 interface NavLink {
   label: string
@@ -96,7 +97,7 @@ export default function Navbar({ links = defaultLinks }: NavbarProps) {
               className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               aria-label="Navigate to home"
             >
-              2L
+              <img className="w-16 h-auto" src={logo} alt="2L" />
             </a>
           </div>
 
