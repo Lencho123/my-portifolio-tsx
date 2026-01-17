@@ -32,6 +32,15 @@
   },
   "description": "Professional portfolio website for Lencho Lachisa Nagasa - Software Engineer",
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Lencho",
+  "license": "ISC",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lencho123/my-portifolio-tsx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lencho123/my-portifolio-tsx/issues"
+  },
+  "homepage": "https://github.com/Lencho123/my-portifolio-tsx#readme"
 }

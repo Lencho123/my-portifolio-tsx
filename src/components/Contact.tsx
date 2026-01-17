@@ -229,7 +229,7 @@ export default function Contact({ links = defaultLinks}: ContactProps) {
   return (
     <section
       id="contact"
-      className="py-20 md:py-28 lg:py-32 bg-white dark:bg-neutral-900"
+      className="py-20 md:py-28 lg:py-32"
       aria-labelledby="contact-heading"
     >
       <Container>

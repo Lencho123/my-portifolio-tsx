@@ -39,7 +39,7 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="py-20 md:py-28 lg:py-32 bg-white dark:bg-neutral-900"
+      className="py-20 md:py-28 lg:py-32"
       aria-labelledby="hero-heading"
     >
       <Container>

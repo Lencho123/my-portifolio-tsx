@@ -69,7 +69,7 @@ export default function Skills({ skills = defaultSkills }: SkillsProps) {
   return (
     <section
       id="skills"
-      className="py-20 md:py-28 lg:py-32 bg-white dark:bg-neutral-900"
+      className="py-20 md:py-28 lg:py-32"
       aria-labelledby="skills-heading"
     >
       <Container>
