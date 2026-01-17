@@ -39,13 +39,12 @@ export default function ScrollButtons() {
           type="button"
           onClick={scrollToTop}
           className="
-            p-3 rounded-full shadow-lg
-            bg-primary-600 dark:bg-primary-500
-            text-white
-            hover:bg-primary-700 dark:hover:bg-primary-600
+            scroll-button-glass scroll-button-glow
+            p-3 rounded-full
+            text-primary-600 dark:text-primary-400
+            hover:text-primary-700 dark:hover:text-primary-300
             focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800
-            transition-all duration-200
-            transform hover:scale-110
+            transition-all duration-300 ease-in-out
           "
           aria-label="Scroll to top"
         >
@@ -72,13 +71,12 @@ export default function ScrollButtons() {
           type="button"
           onClick={scrollToBottom}
           className="
-            p-3 rounded-full shadow-lg
-            bg-primary-600 dark:bg-primary-500
-            text-white
-            hover:bg-primary-700 dark:hover:bg-primary-600
+            scroll-button-glass scroll-button-glow
+            p-3 rounded-full
+            text-primary-600 dark:text-primary-400
+            hover:text-primary-700 dark:hover:text-primary-300
             focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800
-            transition-all duration-200
-            transform hover:scale-110
+            transition-all duration-300 ease-in-out
           "
           aria-label="Scroll to bottom"
         >

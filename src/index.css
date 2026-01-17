@@ -98,4 +98,165 @@
     @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
     @apply max-w-container;
   }
+
+  /* Floating navbar with glassmorphism */
+  .navbar-glass {
+    /* Glassmorphism background */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Default shadow */
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .navbar-glass {
+    background: rgba(23, 23, 23, 0.7);
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glowing border animation */
+  .navbar-glow {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .navbar-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(14, 165, 233, 0.5) 0%,
+      rgba(139, 92, 246, 0.5) 50%,
+      rgba(14, 165, 233, 0.5) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0.6;
+    animation: pulseGlow 4s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  .navbar-glow:hover::before {
+    opacity: 1;
+    animation: pulseGlowHover 2.5s ease-in-out infinite;
+  }
+
+  /* Hover elevation */
+  .navbar-glass:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 48px 0 rgba(31, 38, 135, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease-out;
+  }
+
+  .dark .navbar-glass:hover {
+    box-shadow: 
+      0 12px 48px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
+  /* Scroll buttons with glassmorphism */
+  .scroll-button-glass {
+    /* Glassmorphism background matching navbar */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Default shadow */
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .scroll-button-glass {
+    background: rgba(23, 23, 23, 0.7);
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glowing border for scroll buttons */
+  .scroll-button-glow {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .scroll-button-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(14, 165, 233, 0.5) 0%,
+      rgba(139, 92, 246, 0.5) 50%,
+      rgba(14, 165, 233, 0.5) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0.6;
+    animation: pulseGlow 4s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  .scroll-button-glow:hover::before {
+    opacity: 1;
+    animation: pulseGlowHover 2.5s ease-in-out infinite;
+  }
+
+  /* Hover elevation for scroll buttons */
+  .scroll-button-glass:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+      0 12px 48px 0 rgba(31, 38, 135, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .scroll-button-glass:hover {
+    box-shadow: 
+      0 12px 48px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+@layer utilities {
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.6;
+      background-position: 0% 50%;
+    }
+    50% {
+      opacity: 0.9;
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes pulseGlowHover {
+    0%, 100% {
+      opacity: 0.95;
+      background-position: 0% 50%;
+    }
+    50% {
+      opacity: 1;
+      background-position: 100% 50%;
+    }
+  }
 }

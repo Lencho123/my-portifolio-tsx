@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Container from './Container'
 import ThemeToggle from './ThemeToggle'
 import logo from '../assets/logo.png'
 
@@ -24,17 +23,6 @@ const defaultLinks: NavLink[] = [
 
 export default function Navbar({ links = defaultLinks }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-  const [isScrolled, setIsScrolled] = useState<boolean>(false)
-
-  // Handle scroll for sticky header styling
-  useEffect(() => {
-    const handleScroll = (): void => {
-      setIsScrolled(window.scrollY > 10)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Close mobile menu when clicking outside or on a link
   useEffect(() => {
@@ -74,17 +62,18 @@ export default function Navbar({ links = defaultLinks }: NavbarProps) {
 
   return (
     <header
-      className={`
-        sticky top-0 z-50 w-full
-        transition-all duration-200
-        ${isScrolled 
-          ? 'bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm shadow-sm border-b border-neutral-200 dark:border-neutral-800' 
-          : 'bg-white dark:bg-neutral-900'
-        }
-      `}
+      className="
+        fixed top-4 left-[5%] sm:left-[10%] right-[5%] sm:right-[10%]
+        z-50
+        rounded-2xl
+        group
+        transition-all duration-500 ease-out
+        navbar-glass navbar-glow
+        max-w-[90vw] sm:max-w-none
+      "
       role="banner"
     >
-      <Container>
+      <div className="px-6 md:px-8 lg:px-10">
         <nav
           className="flex items-center justify-between h-16 md:h-20"
           role="navigation"
@@ -179,7 +168,7 @@ export default function Navbar({ links = defaultLinks }: NavbarProps) {
             <ThemeToggle />
           </div>
         </div>
-      </Container>
+      </div>
     </header>
   )
 }
